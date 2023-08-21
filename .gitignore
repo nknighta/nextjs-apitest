@@ -2,5 +2,3 @@
 .next
 .idea
 /dist
-
-!/src-server
