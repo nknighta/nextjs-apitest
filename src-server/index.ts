@@ -27,6 +27,6 @@ import {apisys} from "./api";
 
     server.listen(port, (err?: any) => {
         if (err) throw err;
-        console.log(`> Ready on localhost:${port} - env ${process.env.NODE_ENV}`);
+        console.log(`> Ready on http://127.0.0.1:${port}/ - env ${process.env.NODE_ENV}`);
     });
 })();
