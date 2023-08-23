@@ -7,12 +7,15 @@ import {
 } from "@chakra-ui/react";
 import ScrollableBox from "../components/scroll";
 import {VideoElement} from "../components/video";
-
+import {Type} from "../components/typeanimetion";
 
 Home.getLayout = function getLayout(page: ReactNode) {
     return (
         <MainLayout>
-            {page}
+            <Box pl={{base: 5, md: 7, lg: "15vh", xl: "20vh"}}
+                 pr={{base: 5, md: 7, lg: "15vh",  xl: "20vh"}}>
+                {page}
+            </Box>
         </MainLayout>
     )
 }
@@ -26,16 +29,9 @@ export default function Home() {
     }, []);
     return (
         <div>
-            <h1>ReactJS</h1>
-            <h1>NextJS</h1>
-            <CountButton countprops={10} upvalue={1000}/>
-            <ChangetextColor/>
-            <FormComponent/>
-            <FetchDataTest/>
+            <Type input={"Awesome and powerfull web3 platform."}/>
             <ScrollableBox>
                 <p>bro</p>
-                "VX API v0.3 VARIUS dev team and nknight amamiya 2023\n Hello World!",
-                547148787347611808835434574833210687306837506063501860367182036155657802564750471140784105831542480862352862768745366340727533380047378474168174876368081375310612556517008166580262503735380321637078802870731742217110352325668345437761204267554354037741618501005262330153361635020782313705701402351365
             </ScrollableBox>
             {width}
             <Box bgColor={"#000"} color={"#fff"} position={"relative"} w={700} overflowWrap={"anywhere"}>

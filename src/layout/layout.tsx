@@ -1,27 +1,30 @@
 import React from 'react';
-import {Box, Button, Image, Text} from "@chakra-ui/react";
-import Link from "next/link";
+import {Link, Box, Button} from "@chakra-ui/react";
 import {signIn, signOut, useSession} from "next-auth/react";
+import NextLink from "next/link";
 
 export function HeaderLayout() {
     return (
         <Box
-            bgColor={"#000021"}
+            bgColor={"#090361"}
             color={"#ff4500"}
-            display={"flex"}>
+            display={"flex"}
+            pl={{base: 5, md: 7, lg: "5vh"}}
+            pr={{base: 5, md: 7, lg: "5vh"}}>
             <Box
-                 p={5}
-                 w={"50%"}>
-                <Link href={"/"}>
-                    <Box fontSize={22}
-                         boxShadow={"0 0 .77em #ff4500"}
-                         bgColor={"transparent"}
-                         p={3.2}
-                         textAlign={"center"}
-                        w={100}>
-                        VARIUS
-                    </Box>
-                </Link>
+                p={5}
+                w={"50%"}>
+                <Button
+                    bgColor={"#090361"}
+                    color={"#fff"}
+                    variant={"ghost"}
+                    fontSize={24}
+                    borderRadius={0}
+                    _hover={{
+                        bgColor: "#090391"
+                    }}>
+                    <NextLink href={"/"}>VARIUS</NextLink>
+                </Button>
             </Box>
             <Box w={"50%"} pr={10}>
                 <HeaderAccountBtn/>
