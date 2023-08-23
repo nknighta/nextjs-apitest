@@ -28,19 +28,20 @@ export default function DrawerMenu() {
                 finalFocusRef={btnRef}
             >
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent
+                    bgColor={"#090361"}
+                    color={"#fff"}>
                     <DrawerCloseButton />
-                    <DrawerHeader>Create your account</DrawerHeader>
+                    <DrawerHeader>
+                        VARIUS HOME
+                    </DrawerHeader>
 
-                    <DrawerBody>
-                        <Input placeholder='Type here...' />
+                    <DrawerBody bgColor={"#090361"}>
+                        <Input placeholder='Search' />
                     </DrawerBody>
 
                     <DrawerFooter>
-                        <Button variant='outline' mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme='blue'>Save</Button>
+                        <Button>Sign in</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

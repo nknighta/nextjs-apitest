@@ -5,9 +5,10 @@ import {
     Button,
     Text
 } from "@chakra-ui/react";
-import ScrollableBox from "../components/scroll";
-import {VideoElement} from "../components/video";
-import {Type} from "../components/typeanimetion";
+import ScrollableBox from "@/components/scroll";
+import {VideoElement} from "@/components/video";
+import {Type} from "@/components/typeanimetion";
+import HMeta from "@/components/header";
 
 Home.getLayout = function getLayout(page: ReactNode) {
     return (
@@ -29,6 +30,7 @@ export default function Home() {
     }, []);
     return (
         <div>
+            <HMeta pagetitle={"test"}/>
             <Type input={"Awesome and powerfull web3 platform."}/>
             <ScrollableBox>
                 <p>bro</p>

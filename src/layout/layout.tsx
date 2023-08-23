@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Box, Button} from "@chakra-ui/react";
 import {signIn, signOut, useSession} from "next-auth/react";
 import NextLink from "next/link";
+import DrawerMenu from "@/layout/sidemenu";
 
 export function HeaderLayout() {
     return (
@@ -28,6 +29,9 @@ export function HeaderLayout() {
             </Box>
             <Box w={"50%"} pr={10}>
                 <HeaderAccountBtn/>
+            </Box>
+            <Box display={"flex"} alignItems={"center"}>
+                <DrawerMenu/>
             </Box>
         </Box>
     );
@@ -57,8 +61,8 @@ function HeaderAccountBtn() {
 
 export function FooterLayout() {
     return (
-        <div>
-            <h1>Footer</h1>
-        </div>
+        <Box>
+            @Nknight AMAMIYA 2023
+        </Box>
     );
 };
