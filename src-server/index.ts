@@ -7,7 +7,7 @@ const app = next({dev});
 const handle = app.getRequestHandler();
 import {router} from "./router/router";
 import {apps} from "./apps/router";
-import {apisys} from "./api";
+import {userdata} from "./user/data";
 
 (async () => {
     await app.prepare();
@@ -16,6 +16,7 @@ import {apisys} from "./api";
     // api test
     server.use("/api", router);
     server.use("/apps", apps);
+    server.use("/user", userdata);
 
     server.all("*", (req: Request, res: Response) => {
         return handle(req, res);
