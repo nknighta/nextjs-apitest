@@ -11,7 +11,7 @@ interface Props {
     email?: string;
 }
 
-function SimpleLayout ({children}: Props) {
+function MainLayout ({children}: Props) {
     return (
         <SessionProvider>
             <ChakraProvider>
@@ -27,4 +27,4 @@ function SimpleLayout ({children}: Props) {
     );
 };
 
-export default SimpleLayout;
+export default MainLayout;

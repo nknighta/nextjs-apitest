@@ -11,7 +11,7 @@
     "lint": "eslint --ext .ts,.tsx --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "nknight amamiya<nknight.works@varius-developers.work>",
   "license": "ISC",
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",

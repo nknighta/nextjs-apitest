@@ -28,7 +28,7 @@ export function HeaderLayout() {
                 </Button>
             </Box>
             <Box w={"50%"} pr={10}>
-                <HeaderAccountBtn/>
+                <HeaderPage/>
             </Box>
             <Box display={"flex"} alignItems={"center"}>
                 <DrawerMenu/>
@@ -37,27 +37,23 @@ export function HeaderLayout() {
     );
 }
 
-function HeaderAccountBtn() {
-    const {data: session} = useSession();
-    console.log(session);
-    const BtnLayout = ({children}) => {
-        return (
-            <Box display={"flex"} alignItems={"center"} h={"100%"} justifyContent={"flex-end"} w={"100%"}>
-                {children}
-            </Box>
-        )
-    };
-    return session ? (
+function HeaderPage () {
+    return (
         <BtnLayout>
-            <Link href={"/user"}>My Page</Link>
-            <Button onClick={() => signOut()}>SignOut</Button>
+            <NextLink href={"/signup"}>
+                <Button>SignUp</Button>
+            </NextLink>
         </BtnLayout>
-    ) : (
-        <BtnLayout>
-            <Button onClick={() => signIn()}>SignIn</Button>
-        </BtnLayout>
-    );
+    )
+}
+const BtnLayout = ({children}) => {
+    return (
+        <Box display={"flex"} alignItems={"center"} h={"100%"} justifyContent={"flex-end"} w={"100%"}>
+            {children}
+        </Box>
+    )
 };
+
 
 export function FooterLayout() {
     return (
