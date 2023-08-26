@@ -10,6 +10,10 @@
     "dev:api": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 DEBUG=express:* node ./dist/index.js",
     "lint": "eslint --ext .ts,.tsx --fix"
   },
+  "prisma": {
+    "schema": "prisma/schema.prisma",
+    "seed": "ts-node prisma/seed.ts"
+  },
   "keywords": [],
   "author": "nknight amamiya<nknight.works@varius-developers.work>",
   "license": "ISC",
@@ -39,15 +43,15 @@
     "react-use": "^17.4.0",
     "sass": "^1.65.1",
     "styled-components": "^6.0.7",
-    "three": "^0.155.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "three": "^0.155.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "@types/node": "20.4.10",
+    "@types/node": "^20.4.10",
     "@types/react": "18.2.20",
     "nodemon": "^3.0.1",
-    "prisma": "^5.2.0"
+    "prisma": "^5.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
   }
 }
