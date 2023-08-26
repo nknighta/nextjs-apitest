@@ -21,7 +21,7 @@ Home.getLayout = function getLayout(page: ReactNode) {
 export default function Home() {
     return (
         <div>
-            <HMeta pagetitle={"test"}/>
+            <HMeta pagetitle={"Home"}/>
             <Type input={"hey bro "}/>
             <Container>
                 <Link href={"/signup"}>

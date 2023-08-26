@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link, Box, Button} from "@chakra-ui/react";
-import {signIn, signOut, useSession} from "next-auth/react";
-import NextLink from "next/link";
+import {Box, Button, Container, Center, Text} from "@chakra-ui/react";
+import Link from "next/link";
 import DrawerMenu from "@/layout/sidemenu";
+import useWindowSize from "@/components/multilayout";
 
 export function HeaderLayout() {
     return (
@@ -24,7 +24,7 @@ export function HeaderLayout() {
                     _hover={{
                         bgColor: "#090391"
                     }}>
-                    <NextLink href={"/"}>VARIUS</NextLink>
+                    <Link href={"/"}>VARIUS</Link>
                 </Button>
             </Box>
             <Box w={"50%"} pr={10}>
@@ -37,18 +37,24 @@ export function HeaderLayout() {
     );
 }
 
-function HeaderPage () {
+function HeaderPage() {
     return (
         <BtnLayout>
-            <NextLink href={"/signup"}>
+            <Link href={"/signup"}>
                 <Button>SignUp</Button>
-            </NextLink>
+            </Link>
         </BtnLayout>
     )
 }
+
 const BtnLayout = ({children}) => {
     return (
-        <Box display={"flex"} alignItems={"center"} h={"100%"} justifyContent={"flex-end"} w={"100%"}>
+        <Box display={"flex"}
+             alignItems={"center"}
+             h={"100%"}
+             w={"100%"}
+             justifyContent={"flex-end"}
+        >
             {children}
         </Box>
     )
@@ -56,9 +62,36 @@ const BtnLayout = ({children}) => {
 
 
 export function FooterLayout() {
+    const size:{width:any, height:any} = useWindowSize();
+    const mode: string = size.width > 880 ? "flex" : "block";
+    const wideval: string = size.width > 880 ? "50%" : "100%";
     return (
-        <Box>
-            @Nknight AMAMIYA 2023
+        <Box bg={"#000"}>
+            <Container maxW={"container.lg"}
+                       p={10}>
+                <Center>
+                    @Nknight AMAMIYA 2023
+                </Center>
+                <Box display={mode}
+                     maxWidth={"container.xl"}>
+                    <Box
+                        w={wideval}>
+                        <Link href={"#"}>
+                            <Text color={"#0055ff"}>Home</Text>
+                        </Link>
+                        <Link href={"#"}>
+                            <Text color={"#0055ff"}>API</Text>
+                        </Link>
+                        <Link href={"#"}>
+                            <Text color={"#0055ff"}>Applications</Text>
+                        </Link>
+                    </Box>
+                    <Box
+                         w={wideval}>
+                        1
+                    </Box>
+                </Box>
+            </Container>
         </Box>
     );
 };

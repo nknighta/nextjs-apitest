@@ -1,9 +1,9 @@
 import express, {Request, Response} from 'express';
 import next from "next";
 
-const dev = process.env.NODE_ENV !== "production";
-const port = process.env.PORT;
-const app = next({dev});
+const port = 3000;
+const dev = process.env.NODE_ENV === "development";
+const app = next({dev: dev});
 const handle = app.getRequestHandler();
 import {router} from "./router/router";
 import {apps} from "./apps/router";
@@ -27,7 +27,7 @@ import {userdata} from "./user/data";
     });
 
     server.listen(port, (err?: any) => {
-        if (err) throw err;
+        if (err) throw err
         console.log(`> Ready on http://127.0.0.1:${port}/ - env ${process.env.NODE_ENV}`);
     });
 })();
