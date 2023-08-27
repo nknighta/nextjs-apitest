@@ -1,8 +1,12 @@
 import React from 'react';
-import {Box, Button, Container, Center, Text} from "@chakra-ui/react";
+import {Box, Button, Container, Icon, Center, Text, ButtonGroup} from "@chakra-ui/react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import DrawerMenu from "@/layout/sidemenu";
 import useWindowSize from "@/components/multilayout";
+import {signIn, signOut, useSession} from "next-auth/react";
+import {VscVmConnect} from "react-icons/vsc";
+import {AiOutlineUser} from "react-icons/ai";
 
 export function HeaderLayout() {
     return (
@@ -38,22 +42,83 @@ export function HeaderLayout() {
 }
 
 function HeaderPage() {
+    const {width} = useWindowSize();
+    const mode: string = width > 1000 ? "flex" : "block";
+    const {data: session, status} = useSession();
     return (
         <BtnLayout>
-            <Link href={"/signup"}>
-                <Button>SignUp</Button>
-            </Link>
+            <Box display={"flex"}
+                 visibility={mode === "flex" ? "visible" : "hidden"}>
+                <Link href={"/"}>
+                    <Text>
+                        Products
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+                <Link href={"/"}>
+                    <Text>
+                        Downloads
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+                <Link href={"/"}>
+                    <Text>
+                        Docs
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+            </Box>
+            {session ? (
+                <>
+                    <UserBtn/>
+                </>
+            ) : (
+                <Link href={"/signup"}>
+                    <Button>SignUp</Button>
+                </Link>
+            )}
         </BtnLayout>
     )
 }
 
-const BtnLayout = ({children}) => {
+export function UserBtn () {
+    const router = useRouter();
+    const {data: session} = useSession();
     return (
-        <Box display={"flex"}
+        <ButtonGroup size='md' isAttached variant='outline'>
+            <Button bgColor={"#4499ff"} onClick={
+                () => router.push("/dashboard")
+            }>
+                <Icon as={VscVmConnect}/>
+            </Button>{
+            session ? (
+                <Button bgColor={"#2277ff"} onClick={
+                    () => router.push("/account")
+                }>
+                    <Icon as={AiOutlineUser}/>
+                </Button>
+            ) : (
+                <Button bgColor={"#2277ff"} onClick={
+                    () => router.push("/signup")
+                }>
+                    <Icon as={AiOutlineUser}/>
+                </Button>
+            )
+        }
+        </ButtonGroup>
+    )
+}
+
+const BtnLayout = ({children}) => {
+    const {width} = useWindowSize();
+    const mode: string = width > 1000 ? "flex" : "block";
+    return (
+        <Box display={mode}
              alignItems={"center"}
              h={"100%"}
              w={"100%"}
              justifyContent={"flex-end"}
+             visibility={mode === "flex" ? "visible" : "hidden"}
         >
             {children}
         </Box>
@@ -62,33 +127,73 @@ const BtnLayout = ({children}) => {
 
 
 export function FooterLayout() {
-    const size:{width:any, height:any} = useWindowSize();
+    const size: { width: any, height: any } = useWindowSize();
     const mode: string = size.width > 880 ? "flex" : "block";
     const wideval: string = size.width > 880 ? "50%" : "100%";
+    let date = new Date();
     return (
         <Box bg={"#000"}>
             <Container maxW={"container.lg"}
                        p={10}>
                 <Center>
-                    @Nknight AMAMIYA 2023
+                    @Nknight AMAMIYA 2023 - {date.getFullYear()}
                 </Center>
+                <Box p={5}/>
                 <Box display={mode}
                      maxWidth={"container.xl"}>
                     <Box
-                        w={wideval}>
+                        w={wideval}
+                        color={"#0055ff"}>
                         <Link href={"#"}>
-                            <Text color={"#0055ff"}>Home</Text>
+                            <Text>Home</Text>
                         </Link>
+                        <Box p={2}/>
                         <Link href={"#"}>
-                            <Text color={"#0055ff"}>API</Text>
+                            <Text>API</Text>
                         </Link>
+                        <Box p={2}/>
                         <Link href={"#"}>
-                            <Text color={"#0055ff"}>Applications</Text>
+                            <Text>Applications</Text>
+                        </Link>
+                        <Box p={2}/>
+                    </Box>
+                    <Box
+                        w={wideval}
+                        color={"#0055ff"}>
+                        <Link href={"/about"}>
+                            <Text>About VARIUS</Text>
+                        </Link>
+                        <Box p={2}/>
+                        <Link href={"#"}>
+                            <Text>
+                                Terms of Use
+                            </Text>
+                        </Link>
+                        <Box p={2}/>
+                        <Link href={"#"}>
+                            <Text>
+                                Factory
+                            </Text>
                         </Link>
                     </Box>
                     <Box
-                         w={wideval}>
-                        1
+                        w={wideval}
+                        color={"#0055ff"}>
+                        <Link href={"#"}>
+                            <Text>_projectV</Text>
+                        </Link>
+                        <Box p={2}/>
+                        <Link href={"#"}>
+                            <Text>
+                                Fondation
+                            </Text>
+                        </Link>
+                        <Box p={2}/>
+                        <Link href={"#"}>
+                            <Text>
+                                Platforms
+                            </Text>
+                        </Link>
                     </Box>
                 </Box>
             </Container>

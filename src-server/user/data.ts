@@ -10,10 +10,11 @@ userdata.get("/", async (req, res) => {
 });
 
 userdata.get("/:id", async (req, res) => {
+    const { id } = req.params;
     const user = await prisma.user.findUnique({
         where: {
-            id: Number(req.params.id)
-        }
+            id: parseInt(id),
+        },
     });
     res.json(user);
 });

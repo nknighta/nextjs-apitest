@@ -7,8 +7,8 @@ async function main() {
         update: {},
         create: {
             id: 1,
-            name: 'test',
-            password: ""
+            name: "Alice",
+            password: "123456",
         }
     })
     console.log(user)

@@ -9,17 +9,24 @@ import {
     DrawerCloseButton,
     useDisclosure,
     Button,
-    Input
+    Input, Box
 } from '@chakra-ui/react'
+import {HamburgerIcon} from '@chakra-ui/icons'
+import Link from "next/link";
+import {UserBtn} from "@/layout/layout";
 
 export default function DrawerMenu() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-
+    let w= 10;
     return (
         <>
-            <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                Open
+            <Button ref={btnRef} bgColor={"#090361"} onClick={onOpen} color={"#fff"} w={w} h={w}
+                    _hover={{
+                        bgColor: "#090391"
+                    }}
+            >
+                <HamburgerIcon w={8} h={8}/>
             </Button>
             <Drawer
                 isOpen={isOpen}
@@ -38,10 +45,11 @@ export default function DrawerMenu() {
 
                     <DrawerBody bgColor={"#090361"}>
                         <Input placeholder='Search' />
+                        <Box p={2}/>
+                        <UserBtn/>
                     </DrawerBody>
 
                     <DrawerFooter>
-                        <Button>Sign in</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>

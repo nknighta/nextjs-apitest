@@ -18,6 +18,7 @@
   "author": "nknight amamiya<nknight.works@varius-developers.work>",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -50,7 +51,7 @@
     "@types/node": "^20.4.10",
     "@types/react": "18.2.20",
     "nodemon": "^3.0.1",
-    "prisma": "^5.2.0",
+    "prisma": "^5.3.0-dev.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }

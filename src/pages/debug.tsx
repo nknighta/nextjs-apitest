@@ -4,7 +4,6 @@ import {useRouter} from "next/router";
 
 export default function ({getid}:any) {
     const router = useRouter();
-    const {user} = router.query;
     getid = "1";
     const [name,setName] = useState<string>("");
     const [id,setId] = useState<string>("");
@@ -24,7 +23,6 @@ export default function ({getid}:any) {
             <h1>Debug</h1>
             {name} ,
             {id}
-            {user}
         </div>
     );
 }
