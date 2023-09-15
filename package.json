@@ -7,7 +7,7 @@
     "dev": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 node ./dist/index.js",
     "dev:env": "tsc -p tsconfig.server.json && cross-env NODE_ENV=local ./dist/index.js",
     "dev:auto": "cross-env NODE_ENV=development PORT=12000 nodemon",
-    "dev:api": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 DEBUG=express:* node ./dist/index.js",
+    "dev:api": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 DEBUG=express:router node ./dist/index.js",
     "lint": "eslint --ext .ts,.tsx --fix"
   },
   "prisma": {

@@ -7,6 +7,7 @@ import useWindowSize from "@/components/multilayout";
 import {signIn, signOut, useSession} from "next-auth/react";
 import {VscVmConnect} from "react-icons/vsc";
 import {AiOutlineUser} from "react-icons/ai";
+import { RiTwitterFill, RiFacebookFill , RiDiscordFill} from "react-icons/ri";
 
 export function HeaderLayout() {
     return (
@@ -49,13 +50,13 @@ function HeaderPage() {
         <BtnLayout>
             <Box display={"flex"}
                  visibility={mode === "flex" ? "visible" : "hidden"}>
-                <Link href={"/"}>
+                <Link href={"/product"}>
                     <Text>
                         Products
                     </Text>
                 </Link>
                 <Box pl={5}/>
-                <Link href={"/"}>
+                <Link href={"/downloads"}>
                     <Text>
                         Downloads
                     </Text>
@@ -81,7 +82,7 @@ function HeaderPage() {
     )
 }
 
-export function UserBtn () {
+export function UserBtn() {
     const router = useRouter();
     const {data: session} = useSession();
     return (
@@ -132,12 +133,9 @@ export function FooterLayout() {
     const wideval: string = size.width > 880 ? "50%" : "100%";
     let date = new Date();
     return (
-        <Box bg={"#000"}>
+        <Box bg={"#000"} p={6}>
             <Container maxW={"container.lg"}
                        p={10}>
-                <Center>
-                    @Nknight AMAMIYA 2023 - {date.getFullYear()}
-                </Center>
                 <Box p={5}/>
                 <Box display={mode}
                      maxWidth={"container.xl"}>
@@ -195,6 +193,17 @@ export function FooterLayout() {
                             </Text>
                         </Link>
                     </Box>
+                </Box>
+
+                 <Center color={"#ffffffaa"}>
+                    @Nknight AMAMIYA 2023
+                </Center>
+                <Box
+                    w={wideval}
+                    >
+                    <Icon as={RiTwitterFill}/>
+                    <Icon as={RiFacebookFill}/>
+                    <Icon as={RiDiscordFill}/>
                 </Box>
             </Container>
         </Box>

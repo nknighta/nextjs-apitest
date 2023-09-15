@@ -39,7 +39,6 @@ export default function Signup() {
                             w={300}
                             onClick={() => signIn()}>
                             GitHub
-
                         </Button>
                     </Center>
                 )}
