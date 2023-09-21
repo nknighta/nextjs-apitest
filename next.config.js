@@ -4,5 +4,8 @@ module.exports = {
     },
     typescript: {
         ignoreBuildErrors: true,
+    },
+    experimental: {
+        forceSwcTransforms: false,
     }
 };

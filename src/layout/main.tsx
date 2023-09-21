@@ -3,7 +3,6 @@ import {FooterLayout, HeaderLayout} from "./layout";
 import {ChakraProvider} from "@chakra-ui/react";
 import { SessionProvider} from "next-auth/react";
 import {Box} from "@chakra-ui/react";
-import {useRouter} from "next/router";
 
 interface Props {
     children?: React.ReactNode;

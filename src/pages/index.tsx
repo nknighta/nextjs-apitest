@@ -1,5 +1,6 @@
 import React, {ReactNode} from "react";
 import MainLayout from "../layout/main";
+import HomeLayout from "@/layout/homelayout";
 import {
     Box, Container,
 } from "@chakra-ui/react";
@@ -10,12 +11,12 @@ import { GrBox } from "@/components/gbox";
 
 Home.getLayout = function getLayout(page: ReactNode) {
     return (
-        <MainLayout>
+        <HomeLayout>
             <Box pl={{base: 2, md: 4, lg: "15vh", xl: "20vh"}}
                  pr={{base: 2, md: 4, lg: "15vh", xl: "20vh"}}>
                 {page}
             </Box>
-        </MainLayout>
+        </HomeLayout>
     )
 }
 export default function Home() {
@@ -24,14 +25,8 @@ export default function Home() {
     return (
         <div>
             <HMeta pagetitle={"Home"} pagedes="Home"/>
-            <Container maxW={""} h={400} mt={10} mb={10}>
+            <Container maxW={""} h={400} mt={10} mb={10} color={"#fff"}>
                 <Type input={"Let's make web3 apps amazingly fast, and amazingly easy."}/>
-                <GrBoxSamle>VX</GrBoxSamle>
-            </Container>
-            <Container maxW={"container.lg"}>
-                <Box p={4} w={autow} h={400} bgColor={"#ffffff50"} ml={width > 1000 ? 16: 4} mr={width > 1000 ? 16: 4}  mt={16} mb={16}>
-                    hey
-                </Box>
             </Container>
         </div>
     )

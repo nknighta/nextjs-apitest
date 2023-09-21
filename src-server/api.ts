@@ -1,4 +1,7 @@
 import express, {Request, Response} from "express";
+import {PrismaClient} from "@prisma/client";
+
+const prisma = new PrismaClient();
 export const apisys = express.Router();
 
 apisys.get("/", (req: Request, res: Response, next) => {
@@ -17,4 +20,3 @@ apisys.get("/v1", (req: Request, res: Response, next) => {
 apisys.post("/", (req: Request, res: Response, next) => {
     res.status(200).json(`POST`);
 });
-
