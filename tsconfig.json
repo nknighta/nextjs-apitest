@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "target": "ES2022",
     "paths": {
       "@/*": [
         "src/*"

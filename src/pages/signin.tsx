@@ -1,20 +1,29 @@
 import React, {ReactNode} from "react";
+import HMeta from "@/components/header";
 import MainLayout from "@/layout/main";
 import {Button, Center, Container, Input, Link, Text, Box} from "@chakra-ui/react";
 import {signIn, signOut, useSession} from "next-auth/react";
 import useWindowSize from "@/components/multilayout";
-import HMeta from "@/components/header";
+import {RiGithubFill} from "react-icons/ri";
 
-export default function Signup() {
+Signin.getLayout = function getLayout(page: ReactNode) {
+    return (
+        <MainLayout>
+            {page}
+        </MainLayout>
+    )
+};
+
+export default function Signin () {
     const size = useWindowSize();
     const {data: session} = useSession();
     return (
-        <Box>
+        <>
+            <HMeta pagedes={"Signin"} pagetitle={"Signin"}/>
             <Box display={size.width > 1000 ? "flex" : "inline-block"} w={"100%"} mt={10} mb={10}>
-                <HMeta pagetitle={"Signup"} pagedes={"Create Account Page"}/>
                 <Container>
                     <Center m={10}>
-                        <Text fontSize={28}>Signup</Text>
+                        <Text fontSize={28}>SignIn</Text>
                     </Center>
                     <Center m={5}>
                         <Input placeholder={"email"}/>
@@ -25,7 +34,7 @@ export default function Signup() {
                 </Container>
                 <Container>
                     <Center m={10}>
-                        <Text fontSize={28}>Other Accounts Signup</Text>
+                        <Text fontSize={28}>Accounts SignIn</Text>
                     </Center>
                     {session ? (
                         <Center>
@@ -39,23 +48,14 @@ export default function Signup() {
                             <Button
                                 w={300}
                                 onClick={() => signIn()}>
+                                <RiGithubFill/>
+                                <Box pr={2}/>
                                 GitHub
                             </Button>
                         </Center>
                     )}
                 </Container>
             </Box>
-            <Container>
-                if you have an account, please Login
-            </Container>
-        </Box>
-    )
-};
-
-Signup.getLayout = function getLayout(page: ReactNode) {
-    return (
-        <MainLayout>
-            {page}
-        </MainLayout>
-    )
+        </>
+    );
 }

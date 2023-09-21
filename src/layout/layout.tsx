@@ -1,8 +1,15 @@
 import React from 'react';
-import {Box, Button, Container, Center, Text} from "@chakra-ui/react";
+import {Box, Button, Container, Icon, Center, Text, ButtonGroup} from "@chakra-ui/react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 import DrawerMenu from "@/layout/sidemenu";
 import useWindowSize from "@/components/multilayout";
+import {signIn, signOut, useSession} from "next-auth/react";
+import {VscVmConnect} from "react-icons/vsc";
+import {AiOutlineUser} from "react-icons/ai";
+import {RiTwitterFill, RiFacebookFill, RiDiscordFill} from "react-icons/ri";
+import Footermobile from "@/layout/footermobile";
+import Image from "next/image";
 
 export function HeaderLayout() {
     return (
@@ -38,22 +45,83 @@ export function HeaderLayout() {
 }
 
 function HeaderPage() {
+    const {width} = useWindowSize();
+    const mode: string = width > 1000 ? "flex" : "block";
+    const {data: session, status} = useSession();
     return (
         <BtnLayout>
-            <Link href={"/signup"}>
-                <Button>SignUp</Button>
-            </Link>
+            <Box display={"flex"}
+                 visibility={mode === "flex" ? "visible" : "hidden"}>
+                <Link href={"/product"}>
+                    <Text>
+                        Products
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+                <Link href={"/downloads"}>
+                    <Text>
+                        Downloads
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+                <Link href={"/"}>
+                    <Text>
+                        Docs
+                    </Text>
+                </Link>
+                <Box pl={5}/>
+            </Box>
+            {session ? (
+                <>
+                    <UserBtn/>
+                </>
+            ) : (
+                <Link href={"/signin"}>
+                    <Button>SignIn</Button>
+                </Link>
+            )}
         </BtnLayout>
     )
 }
 
-const BtnLayout = ({children}) => {
+export function UserBtn() {
+    const router = useRouter();
+    const {data: session} = useSession();
     return (
-        <Box display={"flex"}
+        <ButtonGroup size='md' isAttached variant='outline'>
+            <Button bgColor={"#4499ff"} onClick={
+                () => router.push("/dashboard")
+            }>
+                <Icon as={VscVmConnect}/>
+            </Button>{
+            session ? (
+                <Button bgColor={"#2277ff"} onClick={
+                    () => router.push("/account")
+                }>
+                    <Icon as={AiOutlineUser}/>
+                </Button>
+            ) : (
+                <Button bgColor={"#2277ff"} onClick={
+                    () => router.push("/signup")
+                }>
+                    <Icon as={AiOutlineUser}/>
+                </Button>
+            )
+        }
+        </ButtonGroup>
+    )
+}
+
+const BtnLayout = ({children}) => {
+    const {width} = useWindowSize();
+    const mode: string = width > 1000 ? "flex" : "block";
+    return (
+        <Box display={mode}
              alignItems={"center"}
              h={"100%"}
              w={"100%"}
              justifyContent={"flex-end"}
+             visibility={mode === "flex" ? "visible" : "hidden"}
         >
             {children}
         </Box>
@@ -62,36 +130,105 @@ const BtnLayout = ({children}) => {
 
 
 export function FooterLayout() {
-    const size:{width:any, height:any} = useWindowSize();
-    const mode: string = size.width > 880 ? "flex" : "block";
-    const wideval: string = size.width > 880 ? "50%" : "100%";
+    const size: { width, height } = useWindowSize();
+    const multi: boolean = size.width > 880 ? true : false;
+    const mode: string = multi ? "flex" : "block";
+    const wideval: string = multi ? "50%" : "100%";
+    // I don't see the use of this X icon. It's hard to do.
+    let date: Date = new Date();
+    let year:number = date.getFullYear();
     return (
-        <Box bg={"#000"}>
-            <Container maxW={"container.lg"}
-                       p={10}>
-                <Center>
-                    @Nknight AMAMIYA 2023
-                </Center>
-                <Box display={mode}
-                     maxWidth={"container.xl"}>
-                    <Box
-                        w={wideval}>
-                        <Link href={"#"}>
-                            <Text color={"#0055ff"}>Home</Text>
-                        </Link>
-                        <Link href={"#"}>
-                            <Text color={"#0055ff"}>API</Text>
-                        </Link>
-                        <Link href={"#"}>
-                            <Text color={"#0055ff"}>Applications</Text>
-                        </Link>
-                    </Box>
-                    <Box
-                         w={wideval}>
-                        1
-                    </Box>
-                </Box>
-            </Container>
-        </Box>
+        <>
+            {
+                multi ? (
+                    multi ? (
+                            <Box bg={"#000"} p={6}>
+                                <Container maxW={"container.lg"}
+                                           p={10}>
+                                    <Box p={5}/>
+                                    <Box display={mode}
+                                         maxWidth={"container.xl"}>
+                                        <Box
+                                            w={wideval}
+                                            color={"#0055ff"}>
+                                            <Link href={"#"}>
+                                                <Text>Home</Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>API</Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>Applications</Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                        </Box>
+                                        <Box
+                                            w={wideval}
+                                            color={"#0055ff"}>
+                                            <Link href={"/about"}>
+                                                <Text>About VARIUS</Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>
+                                                    Terms of Use
+                                                </Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>
+                                                    Factory
+                                                </Text>
+                                            </Link>
+                                        </Box>
+                                        <Box
+                                            w={wideval}
+                                            color={"#0055ff"}>
+                                            <Link href={"#"}>
+                                                <Text>_projectV</Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>
+                                                    Fondation
+                                                </Text>
+                                            </Link>
+                                            <Box p={2}/>
+                                            <Link href={"#"}>
+                                                <Text>
+                                                    Platforms
+                                                </Text>
+                                            </Link>
+                                        </Box>
+                                    </Box>
+
+                                    <Center color={"#ffffffaa"}>
+                                        (c) Nknight AMAMIYA {year}
+                                    </Center>
+                                    <Box
+                                        w={100}
+                                        display={"flex"}
+                                        justifyContent={"space-between"}
+                                        alignItems={"center"}
+                                        color={"#585858"}
+                                    >
+                                        <Image src={"/xicon.png"} alt={"twitterlink"} width={30} height={30}/>
+                                        <Icon as={RiFacebookFill} w={30} h={30}/>
+                                        <Icon as={RiDiscordFill} w={30} h={30}/>
+                                    </Box>
+                                </Container>
+                            </Box>
+                        )
+                        : (
+                            <Footermobile/>
+                        )
+                ): (
+                    <Footermobile/>
+                )
+            }
+        </>
     );
 };
+

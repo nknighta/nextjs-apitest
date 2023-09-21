@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -6,7 +7,7 @@ async function main() {
         where: { id: 1 },
         update: {},
         create: {
-            id: 1,
+            id: 10,
             name: "Alice",
             password: "123456",
         }

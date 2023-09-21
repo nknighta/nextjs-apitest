@@ -10,6 +10,7 @@ export const VideoElement = ({src,
             autoPlay={true}
             loop={true}
             muted={true}
+
             style={{
                 width: width ? width : "100%",
                 height: height ? height : "100%",
