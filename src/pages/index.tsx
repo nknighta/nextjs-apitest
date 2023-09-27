@@ -1,13 +1,12 @@
 import React, {ReactNode} from "react";
-import MainLayout from "../layout/main";
 import HomeLayout from "@/layout/homelayout";
 import {
-    Box, Container,
+    Box, Center, Container, Text
 } from "@chakra-ui/react";
 import HMeta from "@/components/header";
 import {Type} from "@/components/typeanimetion";
 import useWindowSize from "@/components/multilayout";
-import { GrBox } from "@/components/gbox";
+import styled from "styled-components";
 
 Home.getLayout = function getLayout(page: ReactNode) {
     return (
@@ -19,31 +18,55 @@ Home.getLayout = function getLayout(page: ReactNode) {
         </HomeLayout>
     )
 }
+
+const StyledLink = styled.a`
+  color: #0055ff;
+`;
 export default function Home() {
     const {width} = useWindowSize();
-    const autow = width > 1000 ? "auto" : "100%";
     return (
-        <div>
+        <Box>
             <HMeta pagetitle={"Home"} pagedes="Home"/>
-            <Container maxW={""} h={400} mt={10} mb={10} color={"#fff"}>
-                <Type input={"Let's make web3 apps amazingly fast, and amazingly easy."}/>
+            <Container maxW="container.md"
+                       color={"#fff"}
+                       marginBottom={10}>
+                <Box>
+                    <Center fontSize={30} color={"#7856ff"}>
+                        What's VX?
+                    </Center>
+                    <div style={{fontSize: 20}}>
+                        VX is a collection of libraries and extensions that allow you to easily build virtual currency
+                        payment and profit systems, NFT buying and selling, and metaverse worlds in your own
+                        applications.
+                    </div>
+                </Box>
+                <Box p={10}/>
+                <Box>
+                    <Center fontSize={30} color={"#7856ff"}>
+                        Extensions
+                    </Center>
+                    <Center fontSize={20}>
+                        Layer 2 payment system
+                    </Center>
+                </Box>
             </Container>
-        </div>
+        </Box>
     )
 }
-function GrBoxSamle ({children}:any) {
+
+function GrBoxSamle({children}: any) {
     return (
         <div style={{
             backgroundAttachment: "scroll",
             backgroundColor: "rgba(0, 0, 0, 0)",
-            backgroundImage: "linear-gradient(to right, #000067, #7856ff)",
+            backgroundImage: "linear-gradient(t\o right, #000067, #7856ff)",
             backgroundRepeat: "repeat",
             color: "rgb(255, 255, 255)",
             height: 200,
             width: 600,
             margin: 20,
             boxShadow: "0 5px 30px 15px #000099",
-            padding:30
+            padding: 30
         }}>
             {children}
         </div>
