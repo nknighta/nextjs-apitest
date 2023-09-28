@@ -1,6 +1,7 @@
 module.exports = {
     images: {
-        domains: ['avatars.githubusercontent.com'],
+        domains: ['avatars.githubusercontent.com',
+            'fonts.googleapis.com'],
     },
     typescript: {
         ignoreBuildErrors: true,
