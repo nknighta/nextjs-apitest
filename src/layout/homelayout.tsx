@@ -5,31 +5,10 @@ import Image from "next/image";
 import {FooterLayout} from "@/layout/layout";
 import useWindowSize from "@/components/multilayout";
 import {Type} from "@/components/typeanimetion";
-import fontstyle from "@/script/font.module.sass";
-import {VT323} from "@next/font/google";
-import {useEffect} from "react";
+import textstyle from "@/script/font.module.sass"
 
 // home global style
 
-const LayoutDynamics = styled.div`
-  width: 800px;
-  height: 600px;
-  word-break: break-word;
-  font-size: 2.2rem;
-  font-family: 'VT323', monospace;
-  margin: 10px;
-  padding: 0 60px;
-    @media (max-width: 800px) {
-        width: 800px;
-        height: 600px;
-        word-break: break-word;
-        font-size: 2.2rem;
-        font-family: 'VT323', monospace;
-        margin: 10px;
-        padding: 0 60px;
-        color: #7840ff;
-    }
-`;
 const HomeCompoennt = styled(Box)`
   font-family: 'Verdana', monospace;
   background-color: #000021;
@@ -41,11 +20,6 @@ const HomeComponentGradient = styled.div`
   background-image: linear-gradient(to right, #000024, #000024, #000024, #000058, #6844bb);
 `;
 
-const VT323Font = VT323({
-    weight: "400",
-    preload: false
-})
-
 export default function HomeLayout({children}) {
     const {width} = useWindowSize();
     return (
@@ -53,29 +27,27 @@ export default function HomeLayout({children}) {
             <ChakraProvider>
                 <HomeComponentGradient>
                     <Box h={130} p={10} color={"#fff"}>
-                        <Box className={VT323Font.className}>
-                            <Box display={["flex", "block"]}>
-                                <div style={{marginLeft: width > 880 ? 40 : 10}}>
-                                    <Text fontSize={40}>
-                                        VARIUS
-                                    </Text>
-                                    <Text fontSize={20}>
-                                        awesome web3 and metaverse apps
-                                    </Text>
-                                </div>
-                                <div>
-                                    a
-                                </div>
-                            </Box>
+                        <Box display={["flex", "block"]}>
+                            <div style={{marginLeft: width > 880 ? 40 : 10}}>
+                                <Text fontSize={40}>
+                                    VARIUS
+                                </Text>
+                                <Text fontSize={20}>
+                                    awesome web3 and metaverse apps
+                                </Text>
+                            </div>
                         </Box>
+
                     </Box>
-                    <LayoutDynamics>
-                        <div className={fontstyle.Main}>
+                    <Box h={600}
+                         pl={width > 1000 ? 40 : 10}
+                         bgColor={{base: "#550000", md: "#000066"}}
+                         fontSize={{base:20, md:40 }}
+                         w={width > 1000 ? 700 : 600}>
+                        <div className={textstyle.Hometext}>
                             <Type input={"varius@vx:~$ Hello Web3 'n' metaverse! Let's make web3 and nft apps..."}/>
                         </div>
-                    </LayoutDynamics>
-                    <Box display={"flex"}>
-                        {/* background content */}                    </Box>
+                    </Box>
 
                     {/*=== main content ===*/}
                     <main>
