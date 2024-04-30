@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 node ./dist/index.js",
+    "dev": "tsc -p tsconfig.server.json && cross-env NODE_ENV=development PORT=3000 node ./dist/index.js",
     "dev:env": "tsc -p tsconfig.server.json && cross-env NODE_ENV=local ./dist/index.js",
     "dev:auto": "cross-env NODE_ENV=development PORT=3000 nodemon",
     "api": "tsc -p tscofig.server.json && cross-env NODE_ENV=development PORT=3000 DEBUG=express:router node ./dist/index.js",
